@@ -1,0 +1,63 @@
+<div class="container-detalhes">
+
+  <section>
+    <span>
+      <img src="" alt="" />
+      <h2>{{titulo}}</h2>
+    </span>
+
+    @if (titulo != "CADASTRAR PRODUTO"){
+    <h2> # {{produto?.id}}</h2>
+    }
+
+  </section>
+
+
+  <form #formEdit="ngForm">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input type="text" name="nome" matInput [(ngModel)]="produtoInitializar.nome" required>
+    </mat-form-field>
+    <div class="container-inputs">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input type="number" name="quantidade" matInput [(ngModel)]="produtoInitializar.quantidade" required>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Preço</mat-label>
+        <input type="number" name="preco" matInput [(ngModel)]="produtoInitializar.preco" required>
+      </mat-form-field>
+    </div>
+
+    <div class="container-inputs">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <mat-select name="categoria" [(ngModel)]="produtoInitializar.categoria" required>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select name="status" [(ngModel)]="produtoInitializar.status" required>
+          <mat-option *ngFor="let status of campoStatus" [value]="status">{{status}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput name="descricao" [(ngModel)]="produtoInitializar.descricao" maxlength="100"></textarea>
+    </mat-form-field>
+
+    <div class="container-inputs">
+
+      <button type="submit" mat-raised-button color="primary" (click)="execute(formEdit)" [disabled]="!formEdit.valid">
+        {{ titulo !== "CADASTRAR PRODUTO" ? "ATUALIZAR" : "CADASTRAR" }}
+      </button>
+      <button mat-raised-button color="primary" (click)="close()">Cancelar</button>
+    </div>
+
+  </form>
+
+
+</div>
+

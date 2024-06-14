@@ -1,0 +1,118 @@
+.toolbar {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%; /* Defina a largura desejada */
+  height: 12%; /* Defina a altura desejada */
+  background-color: black;
+  color: white;
+  padding: 25px 15px;
+  text-align: center;
+  gap: 20px;
+
+}
+.container-logo {
+  width: 25%;
+}
+
+span {
+  width: 45%;
+  text-align: left;
+  display: grid;
+  place-items: center center;
+  font-weight: 500;
+}
+
+main {
+  margin: 55px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 85%;
+  height: auto;
+  padding: 45px;
+}
+
+.container-painel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+  .container-painel section {
+    display: flex;
+    justify-content: space-between;
+  }
+
+    .container-painel section span {
+      display: flex;
+      align-items: baseline;
+      align-content: center;
+    }
+
+  .btn-new {
+    background-color: white;
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+  }
+  .btn-new:hover {
+    color: white;
+    background-color: var(--cor-primaria);
+    border: 2px solid white;
+  }
+
+  .btn-new:active{
+      transform: scale(0.8);
+  }
+.cards {
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+
+
+mat-expansion-panel-header {
+  display: grid;
+  place-items: center;
+  height: 5rem;
+}
+
+
+mat-panel-title, mat-icon{
+    font-size: 25px;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+
+form{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+}
+table td, th {
+  margin: 0 auto;
+  text-align: center;
+ 
+}
+
+
+.cdk-overlay-pane .mat-mdc-dialog-panel {
+  width: 85rem !important;
+}
+
+.btn-edit{
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+
+.btn-delet {
+  color: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 12px;
+}

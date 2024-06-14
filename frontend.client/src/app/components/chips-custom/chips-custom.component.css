@@ -1,0 +1,27 @@
+.status-disponivel {
+  color: var(--cor-status-ativo);
+  border: 1px solid var(--cor-status-ativo);
+  border-radius: 100px;
+  padding: 8px;
+}
+
+
+.status-indisponivel {
+  color: var(--cor-primaria);
+  border: 1px solid var(--cor-primaria);
+  border-radius: 100px;
+  padding: 8px;
+}
+
+
+.status-disponivel:hover {
+  background-color: var(--cor-status-ativo);
+  color: white;
+  cursor: pointer;
+}
+
+.status-indisponivel:hover {
+  background-color: var(--cor-primaria);
+  color: white;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+<mat-card [card]="card">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>
+        <mat-icon [fontIcon]="card.icon" inline="true"></mat-icon>
+        {{card.titulo}}
+      </mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>{{card.valor}}</mat-card-content>
+</mat-card>

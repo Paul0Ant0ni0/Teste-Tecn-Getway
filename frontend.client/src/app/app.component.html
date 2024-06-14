@@ -1,0 +1,147 @@
+<mat-toolbar class="toolbar">
+  <div class="container-logo">
+    <img src="https://getway.com.br/wp-content/uploads/2022/11/logo-getway-branco.png" alt="logo" />
+  </div>
+ 
+  <span>SISTEMA DE GERENCIMENTO DE ESTOQUE</span>
+</mat-toolbar>
+
+<main>
+  <div class="container-painel">
+    <section>
+      <span>
+        <img src="../../../assets/dashboard.png" alt="icon-dashboard" />
+        <h2>PAINEL DE CONTROLE</h2>
+      </span>
+
+
+      <a mat-fab class="btn-new" (click)="createProduto()">
+        <i class="material-icons">add</i>
+      </a>
+    </section>
+
+    <div class="cards">
+      <div *ngFor="let card of cards; index as i">
+        <app-card-info [card]="card"></app-card-info>
+      </div>
+
+    </div>
+
+
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon fontIcon="tune" inline="true"></mat-icon>
+            FILTROS
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="formBuscProdutos">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Buscar</mat-label>
+            <input type="text" formControlName="pesquisar" matInput>
+          </mat-form-field>
+          <div class="container-inputs">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Categoria</mat-label>
+              <mat-select formControlName="categoria">
+                <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+                  {{ categoria }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select formControlName="status">
+                <mat-option *ngFor="let status of campoStatus" [value]="status">
+                  {{ status }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="container-inputs">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Filtro por Id</mat-label>
+              <input type="text" formControlName="filtroPorId" matInput>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Quantidade</mat-label>
+              <input type="text" formControlName="quantidade" matInput>
+            </mat-form-field>
+          </div>
+
+          <div class="container-inputs">
+            <button type="submit" mat-raised-button class="btn-principal" (click)="pesquisar()">BUSCAR</button>
+            <button type="submit" mat-raised-button class="btn-principal" (click)="reset()">CANCELAR</button>
+            </div>
+        </form>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <table mat-table [dataSource]="produtos" class="mat-elevation-z8 table-center">
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let produtos">{{produtos.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let produtos">{{produtos.nome}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Categoria">
+      <th mat-header-cell *matHeaderCellDef> Categoria </th>
+      <td mat-cell *matCellDef="let produtos">{{produtos.categoria}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Quantidade">
+      <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+      <td mat-cell *matCellDef="let produtos">{{produtos.quantidade}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Preco">
+      <th mat-header-cell *matHeaderCellDef> Preço </th>
+      <td mat-cell *matCellDef="let produtos">{{produtos.preco | currency:'BRL':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let produtos">
+        <app-chips-custom status={{produtos.status}}>
+          {{produtos.status}}
+        </app-chips-custom>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let produtos">
+
+        <a mat-icon-button class="btn-edit" (click)="editProduto(produtos)">
+          <i class="material-icons">edit</i>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Excluir">
+      <th mat-header-cell *matHeaderCellDef> Excluir </th>
+      <td mat-cell *matCellDef="let produtos">
+
+        <button mat-icon-button class="btn-delet" (click)="deleteProduto(produtos.id)">
+          <i class="material-icons">delete</i>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+
+
+</main>
+
