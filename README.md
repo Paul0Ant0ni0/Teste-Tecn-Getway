@@ -27,7 +27,7 @@ A aplicação frontend foi desenvolvida em Angular para fornecer uma interface d
 
 ### Prototipagem no Figma
 
-Para visualizar as telas prototipadas da interface, acesse os links abaixo:
+Telas prototipadas
 
 <img src="https://github.com/Paul0Ant0ni0/Teste-Tecn-Getway/assets/96313008/9e98da41-5c87-499c-ac68-4b1cf7371fc5" alt="Pag - Home Sem Filtro" width="400" height="auto">
 <img src="https://github.com/Paul0Ant0ni0/Teste-Tecn-Getway/assets/96313008/dc55eedc-905c-44ff-8202-e07135e8f8c8" alt="Modal - Editar" width="400" height="auto">
